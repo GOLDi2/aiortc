@@ -333,10 +333,10 @@ class RTCRtpSender:
                     await asyncio.sleep(0.02)
                     continue
 
-                if hasattr(self.__track, 'raw_recv'):
-                    packet_bytes=await self.__track.raw_recv()
-                    packet=RtpPacket.parse(packet_bytes)
-                    packet.payload_type=codec.payloadType
+                if hasattr(self.__track, "raw_recv"):
+                    packet_bytes = await self.__track.raw_recv()
+                    packet = RtpPacket.parse(packet_bytes)
+                    packet.payload_type = codec.payloadType
                     packet.ssrc = self._ssrc
 
                     # set header extensions
@@ -379,14 +379,19 @@ class RTCRtpSender:
                         ) & 0x00FFFFFF
                         packet.extensions.mid = self.__mid
                         if enc_frame.audio_level is not None:
-                            packet.extensions.audio_level = (False, -enc_frame.audio_level)
+                            packet.extensions.audio_level = (
+                                False,
+                                -enc_frame.audio_level,
+                            )
 
                         # send packet
                         self.__log_debug("> %s", packet)
-                        self.__rtp_history[packet.sequence_number % RTP_HISTORY_SIZE] = (
-                            packet
+                        self.__rtp_history[
+                            packet.sequence_number % RTP_HISTORY_SIZE
+                        ] = packet
+                        packet_bytes = packet.serialize(
+                            self.__rtp_header_extensions_map
                         )
-                        packet_bytes = packet.serialize(self.__rtp_header_extensions_map)
                         await self.transport._send_rtp(packet_bytes)
 
                         self.__ntp_timestamp = clock.current_ntp_time()
