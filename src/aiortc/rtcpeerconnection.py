@@ -985,7 +985,7 @@ class RTCPeerConnection(AsyncIOEventEmitter):
 
         # FIXME: in aiortc 2.0.0 emit RTCTrackEvent directly
         for event in trackEvents:
-            self.emit("track", event.track)
+            self.emit("track", event)
 
         # connect
         asyncio.ensure_future(self.__connect())
