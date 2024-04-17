@@ -3,14 +3,12 @@ requires = ["cffi>=1.0.0", "setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "aiortc"
+name = "crosslab-aiortc"
 description = "An implementation of WebRTC and ORTC"
 readme = "README.rst"
 requires-python = ">=3.8"
 license = { text = "BSD-3-Clause" }
-authors = [
-    { name = "Jeremy Lainé", email = "jeremy.laine@m4x.org" },
-]
+
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment",
@@ -46,7 +44,7 @@ dev = [
 ]
 
 [project.urls]
-homepage = "https://github.com/aiortc/aiortc"
+homepage = "https://github.com/GOLDi2/aiortc"
 changelog = "https://aiortc.readthedocs.io/en/stable/changelog.html"
 documentation = "https://aiortc.readthedocs.io/"
 

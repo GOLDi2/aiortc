@@ -26,6 +26,8 @@
    :target: https://aiortc.readthedocs.io/
    :alt: Documentation
 
+This is a fork of the aiortc project with slight modification neeeded in the crosslab project
+
 What is ``aiortc``?
 -------------------
 
